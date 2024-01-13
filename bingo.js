@@ -1,21 +1,29 @@
 const prompt = require('prompt-sync')();
-console.log('BIENVENIDO AL BINGO');
-let intro = prompt('pulsa intro para empezar')
+
+let lineaPlayer1 = []
+let lineaPlayer2  = []
+let lineaPlayer3 = []
+
+let lineaComputer1 = []
+let lineaComputer2  = []
+let lineaComputer3 = []
+
+let cartonC = {lineaComputer1, lineaComputer2, lineaComputer3};
+let cartonP = {lineaPlayer1, lineaPlayer2, lineaPlayer3};
+
 let numeroAleatorio
-function generarNumero() {
-    return numeroAleatorio = Math.floor(Math.random() * max);
-    if(numerosJugados.length === 101){
-        final()
-    }else{ronda()}
+let numeroRonda
+function generarNumero(min, max) {
+    return numeroAleatorio = Math.floor(Math.random() * (max - min) + min);
 };
 const numerosJugados =[]
 function final() {
     console.log('YA HAN SALIDO TODOS LOS NUEMROS')
-}
+};
 
-let numeroRonda
+
 function GenerarNumeroRonda(){
-    generarNumero(100);
+    generarNumero(1, 100);
     if(numerosJugados.includes(numeroAleatorio) === true) {
         GenerarNumeroRonda();
     }else{
@@ -24,33 +32,84 @@ function GenerarNumeroRonda(){
         numeroRonda = numeroAleatorio;
        
     }
-}
-
-
-
-let lineaC1 = [ 2, 23,45,76,90]
-let lineaC2  = [ 5,25,57,89,100]
-let lineaC3 = [10,55,67,87,'95']
-
-let lineaP1 = [ 3, 33,45,86,99]
-let lineaP2  = [ 4,24,56,88,98]
-let lineaP3 = [11,56,68,86,'97']
-
-
-
-// visualizacion resultado 
-let cartonC = {lineaC1, lineaC2, lineaC3}
-let cartonP = {lineaP1, lineaP2, lineaP3}
-
-/*console.log('carton computer')
-console.table(cartonC);
-console.log('carton jugador')
-console.table(cartonP)*/
+};
 function ronda(){
     GenerarNumeroRonda()
     console.log('¡Ha salido el', numeroRonda,'!')
     console.log('los numeron que ya han salido son: ', numerosJugados)
-    console.log(numerosJugados.length)
+    if(numerosJugados.length === 100) {
+        final() 
+    }else {
+        let next = prompt('pulsa ENTER para el siguiente numero.')
+        ronda()}
     
-}
+};
+
+function generarCartonComputer(){
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j+= 20){
+    generarNumero(i, j)
+        lineaComputer1.push(numeroAleatorio) 
+};
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
+    function lineaCartonComputer2(){
+    generarNumero(i, j)
+    if(lineaComputer1.includes(numeroAleatorio) === false && lineaComputer2.includes(numeroAleatorio)  === false){
+        lineaComputer2.push(numeroAleatorio)
+    }else{lineaCartonComputer2()}
+    }
+    lineaCartonComputer2()
+};
+
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
+    function lineaCartonComputer3(){
+    generarNumero(i, j)
+    if(lineaComputer1.includes(numeroAleatorio) === false && lineaComputer2.includes(numeroAleatorio)  === false){
+        lineaComputer3.push(numeroAleatorio)
+    }else{lineaCartonComputer3()}
+    }
+    lineaCartonComputer3()
+};
+};
+function generarCartonPlayer(){
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j+= 20){
+    generarNumero(i, j)
+        lineaPlayer1.push(numeroAleatorio) 
+};
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
+    function lineaCartonPlayer2(){
+    generarNumero(i, j)
+    if(lineaPlayer1.includes(numeroAleatorio) === false){
+        lineaPlayer2.push(numeroAleatorio)
+    }else{lineaCartonPlayer2()}
+    }
+    lineaCartonPlayer2()
+};
+
+for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
+    function lineaCartonPlayer3(){
+    generarNumero(i, j)
+    if(lineaPlayer1.includes(numeroAleatorio) === false && lineaPlayer2.includes(numeroAleatorio)  === false){
+        lineaPlayer3.push(numeroAleatorio)
+    }else{lineaCartonPlayer3()}
+    }
+    lineaCartonPlayer3()
+};
+};
+
+
+// visualizacion cartones
+
+generarCartonComputer();
+generarCartonPlayer();
+console.log('carton computer')
+console.table(cartonC);
+console.log('carton jugador')
+console.table(cartonP)
+console.log('BIENVENIDO AL BINGO');
+let intro = prompt('pulsa intro para empezar');
 ronda()
