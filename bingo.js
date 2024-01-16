@@ -17,7 +17,7 @@ function generarNumero(min, max) {
     return numeroAleatorio = Math.floor(Math.random() * (max - min) + min);
 };
 const numerosJugados =[]
-function final() {
+function final1() {
     console.log('YA HAN SALIDO TODOS LOS NUEMROS')
 };
 
@@ -35,14 +35,20 @@ function GenerarNumeroRonda(){
 };
 function ronda(){
     GenerarNumeroRonda()
-    console.log('¡Ha salido el', numeroRonda,'!')
+    console.log('(=^･^=) ¡Ha salido el', numeroRonda,'!')
     console.log('los numeron que ya han salido son: ', numerosJugados)
     if(numerosJugados.length === 100) {
-        final() 
+        final1() 
     }else {
-        let next = prompt('pulsa ENTER para el siguiente numero.')
-        ronda()}
-    
+        checkCartones()
+        console.log('los cartones estan asi:')
+        console.log('carton computer')
+        console.table(cartonC);
+        console.log('carton jugador')
+        console.table(cartonP)
+        let next = prompt('(=^･^=) pulsa ENTER para el siguiente numero.')
+        ronda()
+    } 
 };
 
 function generarCartonComputer(){
@@ -100,16 +106,48 @@ for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
     lineaCartonPlayer3()
 };
 };
+function checkCartones (){
 
+    if(lineaComputer1.includes(numeroRonda) === true){
+        let indice = lineaComputer1.indexOf(numeroRonda);
+        lineaComputer1.splice(indice, 1, String(numeroRonda))
+    };
+    if(lineaComputer2.includes(numeroRonda) === true){
+        let indice = lineaComputer2.indexOf(numeroRonda);
+        lineaComputer2.splice(indice, 1, String(numeroRonda))
+    };
+    
+    if(lineaComputer3.includes(numeroRonda) === true){
+        let indice = lineaComputer3.indexOf(numeroRonda);
+        lineaComputer3.splice(indice, 1, String(numeroRonda))
+    };
+    
+    if(lineaPlayer1.includes(numeroRonda) === true){
+        let indice = lineaPlayer1.indexOf(numeroRonda);
+        lineaPlayer1.splice(indice, 1, String(numeroRonda))
+    };
+    
+    if(lineaPlayer2.includes(numeroRonda) === true){
+        let indice = lineaPlayer2.indexOf(numeroRonda);
+        lineaPlayer2.splice(indice, 1, String(numeroRonda))
+    };
+    
+    if(lineaPlayer3.includes(numeroRonda) === true){
+        let indice = lineaPlayer3.indexOf(numeroRonda);
+        lineaPlayer3.splice(indice, 1, String(numeroRonda))
+    };
+    };
 
-// visualizacion cartones
 
 generarCartonComputer();
 generarCartonPlayer();
+console.log('(=^･^=): Hola, soy Miawcat, y te guiaré en este juego')
+console.log('BIENVENIDO AL BINGO');
 console.log('carton computer')
 console.table(cartonC);
 console.log('carton jugador')
 console.table(cartonP)
-console.log('BIENVENIDO AL BINGO');
-let intro = prompt('pulsa intro para empezar');
+let intro = prompt('(=^･^=): pulsa intro para empezar');
 ronda()
+
+
