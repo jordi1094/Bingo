@@ -1,5 +1,6 @@
 const prompt = require('prompt-sync')();
 
+let ContadorLinea = [0,0,0,0,0,0]
 let lineaPlayer1 = []
 let lineaPlayer2  = []
 let lineaPlayer3 = []
@@ -7,12 +8,14 @@ let lineaPlayer3 = []
 let lineaComputer1 = []
 let lineaComputer2  = []
 let lineaComputer3 = []
+let linea;
 
 let cartonC = {lineaComputer1, lineaComputer2, lineaComputer3};
 let cartonP = {lineaPlayer1, lineaPlayer2, lineaPlayer3};
 
 let numeroAleatorio
 let numeroRonda
+
 function generarNumero(min, max) {
     return numeroAleatorio = Math.floor(Math.random() * (max - min) + min);
 };
@@ -41,13 +44,61 @@ function ronda(){
         final1() 
     }else {
         checkCartones()
-        console.log('los cartones estan asi:')
-        console.log('carton computer')
-        console.table(cartonC);
-        console.log('carton jugador')
-        console.table(cartonP)
-        let next = prompt('(=^･^=) pulsa ENTER para el siguiente numero.')
-        ronda()
+
+        lineaComputer1.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[0]+= 1
+            if(linea === undefined && ContadorLinea[0] === 5){linea = "linea computer 1"
+            lineaComputer1.push("linea")
+        }
+            
+        }});
+        lineaComputer2.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[1]+= 1
+            if(linea === undefined && ContadorLinea[1] === 5){linea = "linea computer 2"
+            lineaComputer2.push("linea")
+        }
+        }});
+        lineaComputer3.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[2]+= 1
+            if(linea === undefined && ContadorLinea[2] === 5){linea = "linea computer 3"
+            lineaComputer3.push("linea")
+        }
+        }});
+        lineaPlayer1.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[3]+= 1
+            if(linea === undefined && ContadorLinea[3] === 5){linea = "linea jugador 1"
+            lineaPlayer1.push("linea")
+        }   
+        }});
+        lineaPlayer2.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[4]+= 1
+            if(linea === undefined && ContadorLinea[4] === 5){linea = "linea jugador 2"
+            lineaPlayer2.push("linea")
+        }
+        }});
+        lineaPlayer3.forEach((element) => {if(typeof(element) === "string"){
+            ContadorLinea[5]+= 1
+            if(linea === undefined && ContadorLinea[5] === 5){linea = "linea Jugador 3"
+            lineaPlayer3.push("linea")
+        }  
+        }})
+      
+        if(ContadorLinea[0] >= 5  && ContadorLinea[1] >= 5 && ContadorLinea[2] >= 5){
+            console.log("(=^･^=) HA GANADO EL COMPUTER!!")
+            console.table(cartonC)
+        }if(ContadorLinea[3] >= 5  && ContadorLinea[4] >= 5 && ContadorLinea[5] >= 5){
+            console.log(("=^･^= HA GANADO EL JUGADOR!!"))
+            console.table(cartonP)
+        }else{
+            console.log('los cartones estan asi:')
+            console.log('carton computer')
+            console.table(cartonC);
+            console.log('carton jugador')
+            console.table(cartonP)
+            prompt('(=^･^=) pulsa ENTER para el siguiente numero.')
+            ContadorLinea = [0,0,0,0,0,0]
+            ronda()    
+        }
     } 
 };
 
@@ -139,6 +190,8 @@ function checkCartones (){
     };
 
 
+
+
 generarCartonComputer();
 generarCartonPlayer();
 console.log('(=^･^=): Hola, soy Miawcat, y te guiaré en este juego')
@@ -147,7 +200,7 @@ console.log('carton computer')
 console.table(cartonC);
 console.log('carton jugador')
 console.table(cartonP)
-let intro = prompt('(=^･^=): pulsa intro para empezar');
+prompt('(=^･^=): pulsa intro para empezar');
 ronda()
 
 
