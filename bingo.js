@@ -1,4 +1,6 @@
+
 const prompt = require('prompt-sync')();
+
 
 let ContadorLinea = [0,0,0,0,0,0]
 let lineaPlayer1 = []
@@ -87,7 +89,7 @@ function ronda(){
             console.log("(=^･^=) HA GANADO EL COMPUTER!!")
             console.table(cartonC)
         }if(ContadorLinea[3] >= 5  && ContadorLinea[4] >= 5 && ContadorLinea[5] >= 5){
-            console.log(("=^･^= HA GANADO EL JUGADOR!!"))
+            console.log("=^･^= HA GANADO EL JUGADOR!!")
             console.table(cartonP)
         }else{
             console.log('los cartones estan asi:')
