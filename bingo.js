@@ -1,162 +1,162 @@
 const prompt = require('prompt-sync')();
 
 
-let contadorLinea = [0,0,0,0,0,0]
-let lineaPlayer1 = []
-let lineaPlayer2  = []
-let lineaPlayer3 = []
+let counterLine = [0,0,0,0,0,0]
+let linePlayer1 = []
+let linePlayer2  = []
+let linePlayer3 = []
 
-let lineaComputer1 = []
-let lineaComputer2  = []
-let lineaComputer3 = []
-let linea;
+let lineComputer1 = []
+let lineComputer2  = []
+let lineComputer3 = []
+let line;
 
-let numerosJugados =[]
+let numbersPlayed =[]
 
-let cartonC = {lineaComputer1, lineaComputer2, lineaComputer3};
-let cartonP = {lineaPlayer1, lineaPlayer2, lineaPlayer3};
+let cardC = {lineComputer1, lineComputer2, lineComputer3};
+let cardP = {linePlayer1, linePlayer2, linePlayer3};
 
-let numeroAleatorio
-let numeroRonda
+let randomNumber
+let numbersRound
 
-function generarNumero(min, max) {
-    return numeroAleatorio = Math.floor(Math.random() * (max - min) + min);
+function NumberGenerator(min, max) {
+    return randomNumber = Math.floor(Math.random() * (max - min) + min);
 };
-function generarCartonComputer(){
+function GenerateCardComputer(){
 
     for (let i = 1, j = 21; i < 100 ; i += 20, j+= 20){
-        generarNumero(i, j)
-            lineaComputer1.push(numeroAleatorio) 
+        NumberGenerator(i, j)
+            lineComputer1.push(randomNumber) 
     };
     
     for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
-        function lineaCartonComputer2(){
-        generarNumero(i, j)
-        if(lineaComputer1.includes(numeroAleatorio) === false && lineaComputer2.includes(numeroAleatorio)  === false){
-            lineaComputer2.push(numeroAleatorio)
-        }else{lineaCartonComputer2()}
+        function lineCardComputer2(){
+        NumberGenerator(i, j)
+        if(lineComputer1.includes(randomNumber) === false && lineComputer2.includes(randomNumber)  === false){
+            lineComputer2.push(randomNumber)
+        }else{lineCardComputer2()}
         }
-        lineaCartonComputer2()
+        lineCardComputer2()
     };
     
     
     for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
-        function lineaCartonComputer3(){
-        generarNumero(i, j)
-        if(lineaComputer1.includes(numeroAleatorio) === false && lineaComputer2.includes(numeroAleatorio)  === false){
-            lineaComputer3.push(numeroAleatorio)
-        }else{lineaCartonComputer3()}
+        function lineCardComputer3(){
+        NumberGenerator(i, j)
+        if(lineComputer1.includes(randomNumber) === false && lineComputer2.includes(randomNumber)  === false){
+            lineComputer3.push(randomNumber)
+        }else{lineCardComputer3()}
         }
-        lineaCartonComputer3()
+        lineCardComputer3()
     };
 };
-function generarCartonPlayer(){
+function GenerateCardPlayer(){
     
     for (let i = 1, j = 21; i < 100 ; i += 20, j+= 20){
-        generarNumero(i, j)
-            lineaPlayer1.push(numeroAleatorio) 
+        NumberGenerator(i, j)
+            linePlayer1.push(randomNumber) 
     };
     
     for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
-        function lineaCartonPlayer2(){
-        generarNumero(i, j)
-        if(lineaPlayer1.includes(numeroAleatorio) === false){
-            lineaPlayer2.push(numeroAleatorio)
-        }else{lineaCartonPlayer2()}
+        function lineCardPlayer2(){
+        NumberGenerator(i, j)
+        if(linePlayer1.includes(randomNumber) === false){
+            linePlayer2.push(randomNumber)
+        }else{lineCardPlayer2()}
         }
-        lineaCartonPlayer2()
+        lineCardPlayer2()
     };
     
     for (let i = 1, j = 21; i < 100 ; i += 20, j +=20){
-        function lineaCartonPlayer3(){
-        generarNumero(i, j)
-        if(lineaPlayer1.includes(numeroAleatorio) === false && lineaPlayer2.includes(numeroAleatorio)  === false){
-            lineaPlayer3.push(numeroAleatorio)
-        }else{lineaCartonPlayer3()}
+        function lineCardPlayer3(){
+        NumberGenerator(i, j)
+        if(linePlayer1.includes(randomNumber) === false && linePlayer2.includes(randomNumber)  === false){
+            linePlayer3.push(randomNumber)
+        }else{lineCardPlayer3()}
         }
-        lineaCartonPlayer3()
+        lineCardPlayer3()
     };
 };
-function GenerarNumeroRonda(){
-    generarNumero(1, 100);
-    if(numerosJugados.includes(numeroAleatorio) === true) {
-        GenerarNumeroRonda();
+function GenerarNumbersRound(){
+    NumberGenerator(1, 100);
+    if(numbersPlayed.includes(randomNumber) === true) {
+        GenerarNumbersRound();
     }else{
-        numerosJugados.push(numeroAleatorio)
-        numerosJugados.sort();
-        numeroRonda = numeroAleatorio;
+        numbersPlayed.push(randomNumber)
+        numbersPlayed.sort();
+        numbersRound = randomNumber;
         
     }
 };
 function ronda(){
-    GenerarNumeroRonda()
-    console.log('(=^･^=): ¡Ha salido el', numeroRonda,'!')
-    console.log('(=^･^=): Los numeron que ya han salido son: ', numerosJugados)
-    if(numerosJugados.length === 100) {
+    GenerarNumbersRound()
+    console.log('(=^･^=): ¡Ha salido el', numbersRound,'!')
+    console.log('(=^･^=): Los numeron que ya han salido son: ', numbersPlayed)
+    if(numbersPlayed.length === 100) {
         final1() 
     }else {
-        checkCarton(lineaComputer1, numeroRonda)
-        checkCarton(lineaComputer2, numeroRonda)
-        checkCarton(lineaComputer3, numeroRonda)
-        checkCarton(lineaPlayer1, numeroRonda)
-        checkCarton(lineaPlayer2, numeroRonda)
-        checkCarton(lineaPlayer3, numeroRonda)
+        checkCard(lineComputer1, numbersRound)
+        checkCard(lineComputer2, numbersRound)
+        checkCard(lineComputer3, numbersRound)
+        checkCard(linePlayer1, numbersRound)
+        checkCard(linePlayer2, numbersRound)
+        checkCard(linePlayer3, numbersRound)
         
 
 
-        ContadorLinea(lineaComputer1, 0)
-        ContadorLinea(lineaComputer2, 1)
-        ContadorLinea(lineaComputer3, 2)
-        ContadorLinea(lineaPlayer1, 3)
-        ContadorLinea(lineaPlayer2, 4)
-        ContadorLinea(lineaPlayer3, 5)
+        CounterLine(lineComputer1, 0)
+        CounterLine(lineComputer2, 1)
+        CounterLine(lineComputer3, 2)
+        CounterLine(linePlayer1, 3)
+        CounterLine(linePlayer2, 4)
+        CounterLine(linePlayer3, 5)
         
-        if(contadorLinea[0] >= 5  && contadorLinea[1] >= 5 && contadorLinea[2] >= 5){
+        if(counterLine[0] >= 5  && counterLine[1] >= 5 && counterLine[2] >= 5){
             console.log("(=^･^=) HA GANADO EL COMPUTER!!")
-            console.table(cartonC)
-        }if(contadorLinea[3] >= 5  && contadorLinea[4] >= 5 && contadorLinea[5] >= 5){
-            console.log("=^･^= HA GANADO EL JUGADOR!!")
-            console.table(cartonP)
+            console.table(cardC)
+        }if(counterLine[3] >= 5  && counterLine[4] >= 5 && counterLine[5] >= 5){
+            console.log("=^･^= HA GANADO EL PLAYER!!")
+            console.table(cardP)
         }else{
-            console.log('(=^･^=): los cartones estan asi:')
-            console.log('carton computer')
-            console.table(cartonC);
-            console.log('carton jugador')
-            console.table(cartonP)
+            console.log('(=^･^=): los cardes estan asi:')
+            console.log('card computer')
+            console.table(cardC);
+            console.log('card player')
+            console.table(cardP)
             prompt('(=^･^=): Pulsa ENTER para el siguiente numero.')
-            contadorLinea = [0,0,0,0,0,0]
+            counterLine = [0,0,0,0,0,0]
             ronda()    
         }
     } 
 };
-function ContadorLinea(jugadorYLinea, indiceLinea){
-    jugadorYLinea.forEach((element) => {if(typeof(element) === "string"){
-        contadorLinea[indiceLinea]+= 1
-        if(linea === undefined && contadorLinea[indiceLinea] === 5){linea = 'se ha echo linea'
-        jugadorYLinea.push('linea')
+function CounterLine(playerYLine, indiceLine){
+    playerYLine.forEach((element) => {if(typeof(element) === "string"){
+        counterLine[indiceLine]+= 1
+        if(line === undefined && counterLine[indiceLine] === 5){line = 'se ha echo line'
+        playerYLine.push('line')
         }
     }})
 };
-function checkCarton (lineaToCheck , numeroRonda){
+function checkCard (lineToCheck , numbersRound){
 
-    if(lineaToCheck.includes(numeroRonda) === true){
-        let indice = lineaToCheck.indexOf(numeroRonda);
-        lineaToCheck.splice(indice, 1, String(numeroRonda))
+    if(lineToCheck.includes(numbersRound) === true){
+        let indice = lineToCheck.indexOf(numbersRound);
+        lineToCheck.splice(indice, 1, String(numbersRound))
     };
 }
 function final1() {
     console.log('YA HAN SALIDO TODOS LOS NUEMROS')
 };
 
-generarCartonComputer();
-generarCartonPlayer();
+GenerateCardComputer();
+GenerateCardPlayer();
 console.log('(=^･^=): Hola, soy Miawcat, y te guiaré en este BINGO')
 console.log('(=^･^=): BIENVENIDO AL BINGO');
-console.log('(=^･^=): Estos son los cartones')
-console.log('carton computer')
-console.table(cartonC);
-console.log('carton jugador')
-console.table(cartonP)
+console.log('(=^･^=): Estos son los cardes')
+console.log('card computer')
+console.table(cardC);
+console.log('card player')
+console.table(cardP)
 prompt('(=^･^=): pulsa intro para empezar');
 ronda()
 
